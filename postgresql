@@ -1,0 +1,80 @@
+========================================= Install pgAdmin4 on Ubuntu =========================================
+
+Step 1 – Enable PostgreSQL Apt Repository
+
+	Start with the import of the GPG key for PostgreSQL packages.
+
+	$ sudo apt-get install wget ca-certificates
+	$ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+	Now add the repository to your system.
+
+	$ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+
+Step 2 – Install PostgreSQL on Ubuntu
+
+	$ sudo apt-get update
+	$ sudo apt-get install postgresql postgresql-contrib
+
+Step 3 – Connect to PostgreSQL
+
+	$ sudo su - postgres 
+        $ psql
+
+Note : To get connection info  -> $ \conninfo
+       To exit from PostgreSQL -> $ \q
+
+Step 4 – Set your Username and Password for to create any new DB
+
+	 ALTER USER postgres PASSWORD '< Your password >';
+
+Reference Link - https://tecadmin.net/install-postgresql-server-on-ubuntu/
+
+==============================================================================================================
+
+========================================== Web Interface for PostgreSQL ======================================
+
+Step 1 – Import the repository key.
+
+	$ sudo apt-get install curl ca-certificates
+	$ curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+Step 2 – Update and install the pgadmin package.
+
+	$ sudo apt-get update
+	$ sudo apt-get install pgadmin4
+
+Step 3 – Command to run PostgreSQL in web.
+
+	$ pgadmin4
+
+Reference Link - https://severalnines.com/blog/top-gui-tools-postgresql
+
+===============================================================================================================
+
+====================================== To create new Server in PSQL ===========================================
+
+Step 1 - Connect to PostgreSQL in web using terminal.
+
+	$ pgadmin4
+
+Step 2 - Right click on Servers -> Create -> Server...
+
+Step 3 - Click on connection tab. Enter Host name/Address as 'localhost'. Enter Username as 'postgres'. Enter Password from you have changed in Step 4 while Install pgAdmin4 on Ubuntu
+
+Step 4 - Click on General tab. Enter Name as 'My DB'.
+
+Step 5 - Click save.
+
+===============================================================================================================
+
+====================================== To See tables via terminal =============================================
+
+Step 1 - $ sudo su - postgres psql
+
+Step 2 - $ psql MYDB
+
+Step 3 - $ SELECT * FROM public."<table name>";
+
+===============================================================================================================
+
